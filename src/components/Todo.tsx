@@ -29,7 +29,7 @@ export default function Todo({ todo }: { todo: todoType }) {
             todo.completed && 'line-through text-gray-400'
           }`}
         >
-          <p>{todo.title}</p>
+          <p className="truncate">{todo.title}</p>
           <p
             className={`text-xs ${
               todo.completed ? 'text-gray-400' : 'text-gray-500'
@@ -40,8 +40,8 @@ export default function Todo({ todo }: { todo: todoType }) {
         </label>
       </div>
 
-      <div className="space-x-1 flex">
-				<EditTodoModal todo={todo} />
+      <div className="space-x-1 flex flex-none -ml-12 py-2 px-1">
+        <EditTodoModal todo={todo} />
         <DeleteDialog todo={todo} />
       </div>
     </li>

@@ -36,7 +36,7 @@ export default function AddTodoModal() {
         </button>
       }
     >
-      <div className="space-y-1">
+      <div className="space-y-4">
         <div>
           <label htmlFor="title" className="text-sm">
             Title

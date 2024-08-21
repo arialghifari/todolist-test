@@ -23,7 +23,7 @@ export default function EditTodoModal({ todo }: { todo: Todo }) {
           <img src="/info.svg" alt="info" /> All changes are saved automatically
         </p>
 
-        <div className="space-y-1">
+        <div className="space-y-4">
           <div>
             <label htmlFor="title" className="text-sm">
               Title
