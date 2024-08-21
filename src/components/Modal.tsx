@@ -14,8 +14,8 @@ export default function Modal({
       <Dialog.Trigger asChild>{dialogTrigger}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-30" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] px-2">
-          <div className="relative bg-white p-6 rounded shadow">
+        <Dialog.Content className="fixed top-0 md:top-1/2 left-1/2 transform -translate-x-1/2 md:-translate-y-1/2 w-full md:w-[500px]">
+          <div className="relative bg-white p-6 md:rounded shadow h-screen md:h-fit overflow-auto">
             <Dialog.Title className="text-xl font-semibold">
               {title}
             </Dialog.Title>

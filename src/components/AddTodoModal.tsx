@@ -36,12 +36,12 @@ export default function AddTodoModal() {
         </div>
 
         <div>
-          <label htmlFor="description" className="text-sm">
+          <label htmlFor="due-date" className="text-sm">
             Due Date
           </label>
           <input
             type="date"
-            id="description"
+            id="due-date"
             className="w-full border border-gray-300 px-2 py-1 rounded"
           />
         </div>
