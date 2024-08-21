@@ -1,8 +1,9 @@
 import { Todo as todoType } from '../type/todoTypes'
 import { useTodoStore } from '../store/todoStore'
+import DeleteDialog from './DeleteDialog'
 
 export default function Todo({ todo }: { todo: todoType }) {
-  const { toggleTodo, deleteTodo } = useTodoStore()
+  const { toggleTodo } = useTodoStore()
   const formattedDate = new Date(todo.dueDate).toLocaleDateString('en-GB', {
     year: 'numeric',
     month: 'short',
@@ -42,9 +43,7 @@ export default function Todo({ todo }: { todo: todoType }) {
         <button>
           <img src="/edit.svg" alt="edit" />
         </button>
-        <button onClick={() => deleteTodo(todo.id)}>
-          <img src="/trash.svg" alt="delete" />
-        </button>
+        <DeleteDialog todo={todo} />
       </div>
     </li>
   )
