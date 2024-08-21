@@ -12,7 +12,7 @@ type FilterState = {
   sortTodos: (sort: string) => void
 }
 
-export const useFilterStore = create<FilterState>((set) => ({
+export const useFilterStore = create<FilterState>((set, get) => ({
   filteredTodos: useTodoStore.getState().todos,
   searchTodos: (searchTerm) => {
     const todos = useTodoStore.getState().todos
@@ -24,7 +24,7 @@ export const useFilterStore = create<FilterState>((set) => ({
   },
   curentFilter: 'All',
   filterTodos: (filter) => {
-    const todos = useTodoStore.getState().todos
+    const todos = get().filteredTodos
 
     set({ filteredTodos: todos, curentFilter: filter })
     if (filter === 'All') {
@@ -37,7 +37,7 @@ export const useFilterStore = create<FilterState>((set) => ({
   },
   currentSort: 'Created (Old)',
   sortTodos: (sort) => {
-    const todos = useTodoStore.getState().todos
+    const todos = get().filteredTodos
 
     if (sort === 'Created (Old)') {
       set({
