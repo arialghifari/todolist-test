@@ -1,3 +1,5 @@
+import AddTodoModal from './components/AddTodoModal'
+
 function App() {
   return (
     <div className="flex justify-center h-screen bg-gray-50">
@@ -56,9 +58,7 @@ function App() {
         </div>
 
         <div className="absolute bottom-10 right-10">
-          <button className="bg-purple-700 rounded-full p-2">
-            <img src="/plus.svg" alt="" className="" />
-          </button>
+          <AddTodoModal />
         </div>
       </div>
     </div>
