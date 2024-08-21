@@ -3,6 +3,11 @@ import { useTodoStore } from '../store/todoStore'
 
 export default function Todo({ todo }: { todo: todoType }) {
   const { toggleTodo, deleteTodo } = useTodoStore()
+  const formattedDate = new Date(todo.dueDate).toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
 
   return (
     <li
@@ -23,7 +28,13 @@ export default function Todo({ todo }: { todo: todoType }) {
           }`}
         >
           <p>{todo.title}</p>
-          <p className="text-xs">Due Date: {todo.dueDate}</p>
+          <p
+            className={`text-xs ${
+              todo.completed ? 'text-gray-400' : 'text-gray-500'
+            }`}
+          >
+            Due Date: {formattedDate}
+          </p>
         </label>
       </div>
 
