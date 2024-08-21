@@ -80,5 +80,9 @@ export const useFilterStore = create<FilterState>((set, get) => ({
     set({ currentSort: sort })
   },
   clearFilteredTodos: () =>
-    set({ filteredTodos: useTodoStore.getState().todos, curentFilter: 'All' }),
+    set({
+      filteredTodos: useTodoStore.getState().todos,
+      curentFilter: 'All',
+      currentSort: 'Created (Old)',
+    }),
 }))

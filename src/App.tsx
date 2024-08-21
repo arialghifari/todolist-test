@@ -5,7 +5,7 @@ import TodoList from './components/TodoList'
 import { useFilterStore } from './store/filterStore'
 
 function App() {
-  const { searchTodos } = useFilterStore()
+  const { searchTodos, clearFilteredTodos } = useFilterStore()
 
   return (
     <div className="flex flex-col items-center justify-between h-screen bg-gray-50">
@@ -14,7 +14,10 @@ function App() {
 
         <div className="mt-10 flex flex-col gap-4">
           <input
-            onChange={(e) => searchTodos(e.target.value)}
+            onChange={(e) => {
+              searchTodos(e.target.value)
+              clearFilteredTodos()
+            }}
             type="text"
             placeholder="Search todo.."
             className="w-full border border-gray-300 px-2 py-2 rounded"
