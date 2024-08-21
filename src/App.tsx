@@ -3,8 +3,8 @@ import TodoList from './components/TodoList'
 
 function App() {
   return (
-    <div className="flex justify-center h-screen bg-gray-50">
-      <div className="flex flex-col w-[600px] relative p-10">
+    <div className="flex flex-col items-center justify-between h-screen bg-gray-50">
+      <div className="flex flex-col relative p-4 md:p-10 w-full md:w-[600px]">
         <h1 className="text-center text-2xl font-bold">TODO LIST</h1>
 
         <div className="mt-10 flex gap-5">
@@ -15,13 +15,13 @@ function App() {
           />
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 pb-10">
           <TodoList />
         </div>
+      </div>
 
-        <div className="absolute bottom-10 right-10">
-          <AddTodoModal />
-        </div>
+      <div className="px-4 md:px-10 sticky bottom-5 md:bottom-10 right-10 flex justify-end w-full md:w-[600px]">
+        <AddTodoModal />
       </div>
     </div>
   )

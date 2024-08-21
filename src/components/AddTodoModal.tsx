@@ -31,7 +31,7 @@ export default function AddTodoModal() {
       setOpen={setIsOpen}
       title="Add Todo"
       dialogTrigger={
-        <button className="bg-purple-700 rounded-full p-2">
+        <button className="bg-blue-700 rounded-full p-2">
           <img src="/plus.svg" alt="" className="" />
         </button>
       }
@@ -78,7 +78,7 @@ export default function AddTodoModal() {
         <div>
           <button
             onClick={handleSubmit}
-            className="bg-purple-700 rounded text-white w-full p-2 mt-3"
+            className="bg-blue-700 rounded text-white w-full p-2 mt-3"
           >
             Add
           </button>
