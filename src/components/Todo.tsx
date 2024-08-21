@@ -1,6 +1,7 @@
 import { Todo as todoType } from '../type/todoTypes'
 import { useTodoStore } from '../store/todoStore'
 import DeleteDialog from './DeleteDialog'
+import EditTodoModal from './EditTodoModal'
 
 export default function Todo({ todo }: { todo: todoType }) {
   const { toggleTodo } = useTodoStore()
@@ -40,9 +41,7 @@ export default function Todo({ todo }: { todo: todoType }) {
       </div>
 
       <div className="space-x-1 flex">
-        <button>
-          <img src="/edit.svg" alt="edit" />
-        </button>
+				<EditTodoModal todo={todo} />
         <DeleteDialog todo={todo} />
       </div>
     </li>

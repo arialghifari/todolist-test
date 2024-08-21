@@ -7,6 +7,7 @@ type State = {
   toggleTodo: (id: string) => void
   addTodo: (todo: Todo) => void
   deleteTodo: (id: string) => void
+  updateTodo: (id: string, updatedTodo: Todo) => void
 }
 
 export const useTodoStore = create<State>()(
@@ -40,6 +41,12 @@ export const useTodoStore = create<State>()(
       deleteTodo: (id) =>
         set((state) => ({
           todos: state.todos.filter((todo) => todo.id !== id),
+        })),
+      updateTodo: (id, updatedTodo) =>
+        set((state) => ({
+          todos: state.todos.map((todo) =>
+            todo.id === id ? updatedTodo : todo
+          ),
         })),
     }),
     {
