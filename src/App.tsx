@@ -1,4 +1,6 @@
 import AddTodoModal from './components/AddTodoModal'
+import FilterDropdown from './components/FilterDropdown'
+import SortDropdown from './components/SortDropdown'
 import TodoList from './components/TodoList'
 import { useFilterStore } from './store/filterStore'
 
@@ -10,13 +12,18 @@ function App() {
       <div className="flex flex-col relative p-4 md:p-10 w-full md:w-[600px]">
         <h1 className="text-center text-2xl font-bold">TODO LIST</h1>
 
-        <div className="mt-10 flex gap-5">
+        <div className="mt-10 flex flex-col gap-4">
           <input
             onChange={(e) => searchTodos(e.target.value)}
             type="text"
-            placeholder="Search note.."
-            className="w-full border border-gray-300 px-2 py-1 rounded"
+            placeholder="Search todo.."
+            className="w-full border border-gray-300 px-2 py-2 rounded"
           />
+
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-8">
+            <FilterDropdown />
+            <SortDropdown />
+          </div>
         </div>
 
         <div className="mt-8 pb-10">
