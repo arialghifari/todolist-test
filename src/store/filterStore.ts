@@ -24,7 +24,7 @@ export const useFilterStore = create<FilterState>((set, get) => ({
   },
   curentFilter: 'All',
   filterTodos: (filter) => {
-    const todos = get().filteredTodos
+    const todos = useTodoStore.getState().todos
 
     set({ filteredTodos: todos, curentFilter: filter })
     if (filter === 'All') {
@@ -76,6 +76,8 @@ export const useFilterStore = create<FilterState>((set, get) => ({
         ),
       })
     }
+
+    set({ currentSort: sort })
   },
   clearFilteredTodos: () =>
     set({ filteredTodos: useTodoStore.getState().todos, curentFilter: 'All' }),
