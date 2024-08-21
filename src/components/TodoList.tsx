@@ -1,21 +1,28 @@
+import React from 'react'
+import { useFilterStore } from '../store/filterStore'
 import { useTodoStore } from '../store/todoStore'
+import EmptyState from './EmptyState'
 import Todo from './Todo'
 
 export default function TodoList() {
   const { todos } = useTodoStore()
+  const { filteredTodos, clearFilteredTodos } = useFilterStore()
+
+  React.useEffect(() => {
+    clearFilteredTodos()
+  }, [todos, clearFilteredTodos])
 
   if (todos.length === 0) {
-    return (
-      <div className="flex flex-col justify-center items-center">
-        <img src="/empty.svg" alt="empty todo" />
-        <p className="mt-2">Empty..</p>
-      </div>
-    )
+    return <EmptyState text="Empty.." />
+  }
+
+  if (filteredTodos.length === 0) {
+    return <EmptyState text="Nothing found.." />
   }
 
   return (
     <ul className="space-y-2">
-      {todos.map((todo) => (
+      {filteredTodos.map((todo) => (
         <Todo key={todo.id} todo={todo} />
       ))}
     </ul>
