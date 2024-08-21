@@ -8,8 +8,21 @@ export default function AddTodoModal() {
   const [description, setDescription] = React.useState('')
   const [dueDate, setDueDate] = React.useState('')
   const [isOpen, setIsOpen] = React.useState(false)
+  const [error, setError] = React.useState({
+    title: '',
+    dueDate: '',
+  })
 
   function handleSubmit() {
+    if (!title) {
+      setError({ ...error, title: 'Title is required' })
+      return
+    }
+    if (!dueDate) {
+      setError({ ...error, dueDate: 'Due date is required' })
+      return
+    }
+
     const date = new Date()
 
     const todo = {
@@ -22,6 +35,9 @@ export default function AddTodoModal() {
     }
 
     addTodo(todo)
+    setTitle('')
+    setDescription('')
+    setDueDate('')
     setIsOpen(false)
   }
 
@@ -39,15 +55,22 @@ export default function AddTodoModal() {
       <div className="space-y-4">
         <div>
           <label htmlFor="title" className="text-sm">
-            Title
+            Title *
           </label>
           <input
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              setTitle(e.target.value)
+              setError({ ...error, title: '' })
+            }}
+            value={title}
             type="text"
             id="title"
             placeholder="todo title"
             className="w-full border border-gray-300 px-2 py-1 rounded"
           />
+          {error?.title && (
+            <p className="text-red-500 text-sm mt-1">{error.title}</p>
+          )}
         </div>
 
         <div>
@@ -65,14 +88,21 @@ export default function AddTodoModal() {
 
         <div>
           <label htmlFor="due-date" className="text-sm">
-            Due Date
+            Due Date *
           </label>
           <input
-            onChange={(e) => setDueDate(e.target.value)}
+            onChange={(e) => {
+              setDueDate(e.target.value)
+              setError({ ...error, dueDate: '' })
+            }}
+            value={dueDate}
             type="date"
             id="due-date"
             className="w-full border border-gray-300 px-2 py-1 rounded"
           />
+          {error?.dueDate && (
+            <p className="text-red-500 text-sm mt-1">{error.dueDate}</p>
+          )}
         </div>
 
         <div>
