@@ -14,7 +14,7 @@ export default function TodoList() {
   }
 
   return (
-    <ul className="space-y-2">
+    <ul className="space-y-1">
       {todos.map((todo) => (
         <Todo key={todo.id} todo={todo} />
       ))}

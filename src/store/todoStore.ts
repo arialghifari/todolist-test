@@ -3,7 +3,9 @@ import { Todo } from '../type/todoTypes'
 
 type State = {
   todos: Todo[]
+  toggleTodo: (id: string) => void
   addTodo: (todo: Todo) => void
+  deleteTodo: (id: string) => void
 }
 
 export const useTodoStore = create<State>((set) => ({
@@ -19,9 +21,17 @@ export const useTodoStore = create<State>((set) => ({
       id: '2',
       title: 'Todo 2',
       description: 'Todo 2 description',
-      dueDate: '2022-01-01',
+      dueDate: '2022-01-31',
       completed: true,
     },
   ],
+  toggleTodo: (id) =>
+    set((state) => ({
+      todos: state.todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      ),
+    })),
   addTodo: (todo) => set((state) => ({ todos: [...state.todos, todo] })),
+  deleteTodo: (id) =>
+    set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) })),
 }))
