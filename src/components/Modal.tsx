@@ -4,13 +4,17 @@ export default function Modal({
   title,
   dialogTrigger,
   children,
+  open = false,
+  setOpen,
 }: {
   title: string
   dialogTrigger: JSX.Element
   children: JSX.Element
+  open: boolean
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>{dialogTrigger}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-30" />

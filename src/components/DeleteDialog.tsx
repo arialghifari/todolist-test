@@ -7,7 +7,7 @@ export default function DeleteDialog({ todo }: { todo: Todo }) {
 
   return (
     <Dialog
-      title={`Delete todo "${todo.title}"?`}
+      title={`Delete "${todo.title}"?`}
       dialogTrigger={
         <button>
           <img src="/trash.svg" alt="delete" />

@@ -1,8 +1,34 @@
+import React from 'react'
 import Modal from './Modal'
+import { useTodoStore } from '../store/todoStore'
 
 export default function AddTodoModal() {
+  const { addTodo } = useTodoStore()
+  const [title, setTitle] = React.useState('')
+  const [description, setDescription] = React.useState('')
+  const [dueDate, setDueDate] = React.useState('')
+  const [isOpen, setIsOpen] = React.useState(false)
+
+  function handleSubmit() {
+    const date = new Date()
+
+    const todo = {
+      id: crypto.randomUUID(),
+      title,
+      description,
+      createdDate: date.toLocaleDateString('en-GB'),
+      dueDate,
+      completed: false,
+    }
+
+    addTodo(todo)
+    setIsOpen(false)
+  }
+
   return (
     <Modal
+      open={isOpen}
+      setOpen={setIsOpen}
       title="Add Todo"
       dialogTrigger={
         <button className="bg-purple-700 rounded-full p-2">
@@ -16,6 +42,7 @@ export default function AddTodoModal() {
             Title
           </label>
           <input
+            onChange={(e) => setTitle(e.target.value)}
             type="text"
             id="title"
             placeholder="todo title"
@@ -28,6 +55,7 @@ export default function AddTodoModal() {
             Description
           </label>
           <textarea
+            onChange={(e) => setDescription(e.target.value)}
             id="description"
             rows={3}
             className="w-full border border-gray-300 px-2 py-1 rounded block"
@@ -40,6 +68,7 @@ export default function AddTodoModal() {
             Due Date
           </label>
           <input
+            onChange={(e) => setDueDate(e.target.value)}
             type="date"
             id="due-date"
             className="w-full border border-gray-300 px-2 py-1 rounded"
@@ -47,7 +76,10 @@ export default function AddTodoModal() {
         </div>
 
         <div>
-          <button className="bg-purple-700 rounded text-white w-full p-2 mt-3">
+          <button
+            onClick={handleSubmit}
+            className="bg-purple-700 rounded text-white w-full p-2 mt-3"
+          >
             Add
           </button>
         </div>
