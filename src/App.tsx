@@ -15,8 +15,8 @@ function App() {
         <div className="mt-10 flex flex-col gap-4">
           <input
             onChange={(e) => {
-              searchTodos(e.target.value)
               clearFilteredTodos()
+              searchTodos(e.target.value)
             }}
             type="text"
             placeholder="Search todo.."
