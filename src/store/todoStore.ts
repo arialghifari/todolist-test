@@ -30,6 +30,14 @@ export const useTodoStore = create<State>()(
           dueDate: '2024-08-30',
           completed: true,
         },
+        {
+          id: '3',
+          title: 'Todo 3',
+          description: 'Todo 3 description',
+          createdDate: '10/08/2024',
+          dueDate: '2024-08-18',
+          completed: false,
+        },
       ],
       toggleTodo: (id) =>
         set((state) => ({

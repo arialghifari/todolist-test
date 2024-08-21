@@ -33,6 +33,18 @@ export const useFilterStore = create<FilterState>((set, get) => ({
       set({ filteredTodos: todos.filter((todo) => todo.completed) })
     } else if (filter === 'Uncompleted') {
       set({ filteredTodos: todos.filter((todo) => !todo.completed) })
+    } else if (filter === 'Is Overdue') {
+      set({
+        filteredTodos: todos.filter(
+          (todo) => new Date(todo.dueDate) < new Date()
+        ),
+      })
+    } else if (filter === 'Is Not Overdue') {
+      set({
+        filteredTodos: todos.filter(
+          (todo) => new Date(todo.dueDate) >= new Date()
+        ),
+      })
     }
   },
   currentSort: 'Created (Old)',

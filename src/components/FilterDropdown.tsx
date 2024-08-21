@@ -2,7 +2,13 @@ import { useFilterStore } from '../store/filterStore'
 import Dropdown from './Dropdown'
 
 export default function FilterDropdown() {
-  const FILTER_OPTIONS = ['All', 'Completed', 'Uncompleted']
+  const FILTER_OPTIONS = [
+    'All',
+    'Completed',
+    'Uncompleted',
+    'Is Overdue',
+    'Is Not Overdue',
+  ]
   const { curentFilter, filterTodos } = useFilterStore()
 
   return (

@@ -10,6 +10,7 @@ export default function Todo({ todo }: { todo: todoType }) {
     month: 'short',
     day: 'numeric',
   })
+  const isOverdue = new Date(todo.dueDate) < new Date()
 
   return (
     <li
@@ -36,6 +37,7 @@ export default function Todo({ todo }: { todo: todoType }) {
             }`}
           >
             Due Date: {formattedDate}
+            {isOverdue && <span className="text-red-500 ml-1"> (Overdue)</span>}
           </p>
         </label>
       </div>
